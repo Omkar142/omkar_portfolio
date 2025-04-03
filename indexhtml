@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omkar Gochhayat | Project Manager</title>
+  <style>
+    :root {
+      --primary: #0050ff;
+      --secondary: #00c2ff;
+      --dark: #121212;
+      --light: #f5f5f7;
+      --success: #00b894; /* Added for icon variation */
+      --google-blue: #4285F4;
+      --google-red: #DB4437;
+      --google-yellow: #F4B400;
+      --google-green: #0F9D58;
+      --cisco-blue: #049FD9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Header Styles */
+    header {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-content {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .header-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0,80,255,0.05) 0%, rgba(0,194,255,0.1) 100%);
+      z-index: 1;
+    }
+
+    .header-circle {
+      position: absolute;
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .circle-1 {
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(45deg, var(--google-blue), var(--google-green));
+      top: -150px;
+      right: -150px;
+      opacity: 0.3;
+    }
+
+    .circle-2 {
+      width: 500px;
+      height: 500px;
+      background: linear-gradient(45deg, var(--cisco-blue), var(--secondary));
+      bottom: -250px;
+      left: -250px;
+      opacity: 0.2;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem 0;
+      z-index: 100;
+      background-color: rgba(245, 245, 247, 0.8);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+    }
+
+    .cta-button {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 80, 255, 0.2);
+    }
+
+    .title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: white;
+      color: var(--primary);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* About Section */
+    .about {
+      padding: 8rem 0;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-img {
+      position: relative;
+      width: 100%;
+      max-width: 400px; /* Control max width */
+      margin: 0 auto; /* Center if needed */
+      aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
+      min-height: 300px; /* Ensure min height */
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      background-color: #e0e0e0; /* Fallback bg color */
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block; /* Ensure image behaves like a block */
+      background-color: var(--light); /* Background for the image itself */
+    }
+
+    /* Style for the SVG fallback if image fails */
+     .about-img .img-fallback {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--light);
+        color: var(--primary); /* Use primary color for icon */
+        padding: 20%; /* Adjust padding as needed */
+     }
+
+     .about-img .img-fallback svg {
+         width: 100%;
+         height: 100%;
+     }
+
+
+    .about-text {
+      line-height: 1.8;
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+
+    .skill-bars {
+      margin-top: 2rem;
+    }
+
+    .skill-bar {
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-progress {
+      width: 100%;
+      height: 8px;
+      background-color: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 1.5s ease;
+    }
+
+    .project-management {
+      background: linear-gradient(45deg, var(--google-blue), var(--google-green));
+      width: 90%;
+    }
+
+    .tech-leadership {
+      background: linear-gradient(45deg, var(--google-red), var(--google-yellow));
+      width: 85%;
+    }
+
+    .generative-ai {
+      background: linear-gradient(45deg, var(--google-green), var(--google-blue));
+      width: 80%;
+    }
+
+    .software-engineering {
+      background: linear-gradient(45deg, var(--cisco-blue), var(--secondary));
+      width: 75%;
+    }
+
+    /* Experience Section */
+    .experience {
+      padding: 8rem 0;
+      background-color: #f9f9f9;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      border-radius: 3px;
+    }
+
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: -10px;
+      background-color: white;
+      border: 4px solid var(--primary);
+      top: 22px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .left {
+      left: 0;
+    }
+
+    .right {
+      left: 50%;
+    }
+
+    .right::after {
+      left: -10px;
+    }
+
+    .timeline-content {
+      padding: 2rem;
+      background-color: white;
+      position: relative;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .timeline-content::after {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      width: 0;
+      height: 0;
+      top: 22px;
+    }
+
+    .left .timeline-content::after {
+      border-width: 10px 0 10px 10px;
+      border-color: transparent transparent transparent white;
+      right: -10px;
+    }
+
+    .right .timeline-content::after {
+      border-width: 10px 10px 10px 0;
+      border-color: transparent white transparent transparent;
+      left: -10px;
+    }
+
+    .timeline-date {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      padding: 0.3rem 1rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .timeline-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .timeline-company {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    .timeline-description {
+      margin-bottom: 0;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .timeline-achievement {
+      margin-top: 1rem;
+      padding: 0.8rem;
+      background-color: rgba(0, 80, 255, 0.05);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* Projects Section */
+    .projects {
+      padding: 8rem 0;
+      background-color: white;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .project-card {
+      background-color: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-header {
+      height: 200px;
+      overflow: hidden;
+      background-color: var(--light); /* Use light bg for placeholders */
+      display: flex; /* To center icon */
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Style for the embedded SVG icons */
+    .card-svg-icon {
+        width: 80px; /* Adjust size as needed */
+        height: 80px; /* Adjust size as needed */
+        opacity: 0.7;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .project-card:hover .card-svg-icon {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .card-subtitle {
+      color: #777;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .card-text {
+      color: #555;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag {
+      padding: 0.3rem 0.8rem;
+      background-color: rgba(0, 80, 255, 0.1);
+      color: var(--primary);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .card-link {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.3s ease;
+    }
+
+    .card-link:hover {
+      gap: 0.8rem;
+    }
+
+    /* Skills Section */
+    .skills {
+      padding: 8rem 0;
+      background-color: #f5f5f7;
+    }
+
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .skill-card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .skill-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .skill-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 8rem 0;
+      background-color: white;
+    }
+
+    .testimonial-container {
+      max-width: 800px;
+      margin: 3rem auto 0;
+      position: relative;
+    }
+
+    .testimonial {
+      background-color: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    .testimonial-text {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      color: #555;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .testimonial-role {
+      color: #777;
+      margin-top: 0.3rem;
+    }
+
+    .quote-icon {
+      position: absolute;
+      font-size: 5rem;
+      opacity: 0.1;
+      color: var(--primary);
+    }
+
+    .quote-left {
+      top: 20px;
+      left: 20px;
+    }
+
+    .quote-right {
+      bottom: 20px;
+      right: 20px;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 8rem 0;
+      background-color: #f9f9f9;
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 4rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: rgba(0, 80, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    .contact-text {
+      line-height: 1.5;
+    }
+
+    .contact-form {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #555;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 80, 255, 0.1);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 3rem 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-link {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--secondary);
+    }
+
+    .copyright {
+      margin-top: 2rem;
+      text-align: center;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Media Queries */
+    @media (max-width: 1024px) {
+      .title {
+        font-size: 3rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .about-img {
+        height: auto; /* Allow aspect ratio to dictate height */
+        max-width: 300px; /* Further reduce size on tablet */
+      }
+
+      .timeline::after {
+        left: 31px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+
+      .timeline-item::after {
+        left: 21px;
+      }
+
+      .left::after, .right::after {
+        left: 21px;
+      }
+
+      .right {
+        left: 0;
+      }
+
+      .left .timeline-content::after, .right .timeline-content::after {
+        left: -10px;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+      }
+
+      .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 0;
+      }
+
+      .nav-links {
+        display: none; /* Hide links for simple demo, implement hamburger later */
+      }
+
+      .title {
+        font-size: 2.5rem;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+      }
+
+       .about-content {
+         gap: 2rem; /* Reduce gap on mobile */
+       }
+       .about-img {
+         max-width: 250px; /* Even smaller on mobile */
+       }
+
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="logo">Omkar G.</a>
+      <div class="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <a href="#contact" class="cta-button">Connect</a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <div class="header-bg"></div>
+    <div class="header-circle circle-1"></div>
+    <div class="header-circle circle-2"></div>
+    <div class="container header-content">
+      <h1 class="title">Omkar Gochhayat</h1>
+      <p class="subtitle">Project Manager at Google Play | Ex-Cisco | AI & Cloud Expert | Driving operational excellence through technology leadership</p>
+      <a href="#contact" class="cta-button">Get In Touch</a>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/omkar-gochhayat" class="social-link" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </a>
+        <a href="mailto:omkargochhayat@gmail.com" class="social-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-img">
+          <!-- *** FINAL FIX: References local file for GitHub Pages. MUST upload omkar-profile.jpeg *** -->
+          <img src="omkar-profile.jpeg" alt="Omkar Gochhayat - Profile Picture"
+               onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'img-fallback\'><svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'currentColor\'><path d=\'M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z\'/></svg></div>';">
+        </div>
+        <div class="about-text">
+          <p>I transitioned from an engineering foundation (B.Tech CSE, Cisco Systems) into project management at Google, driven by a passion for solving complex operational problems and driving efficiency at scale. My time within Google Play provided an accelerated path to owning and delivering impactful initiatives focused on platform integrity, operational excellence, and vendor strategy.</p>
+          <p>I excel at leading cross-functional projects, engaging stakeholders across Engineering, Product, Operations, and Policy. My technical background enables me to effectively bridge the gap between engineering realities and business objectives - a unique combination that helps me deliver exceptional results.</p>
+          <p>I've spearheaded process re-engineering efforts that significantly reduced critical backlogs and drove analyses that identified substantial operational efficiency opportunities. My approach combines technical rigor with strategic business thinking.</p>
+          <div class="skill-bars">
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span>Project Management</span>
+                <span>90%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar project-management"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span>Technical Leadership</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar tech-leadership"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span>Generative AI</span>
+                <span>80%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar generative-ai"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span>Software Engineering</span>
+                <span>75%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="progress-bar software-engineering"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="experience">
+    <div class="container">
+      <h2 class="section-title">My Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <div class="timeline-date">March 2024 - Present</div>
+            <h3 class="timeline-title">Project Manager</h3>
+            <span class="timeline-company">Google Play</span>
+            <p class="timeline-description">Leading mission-critical initiatives across Google Play focused on platform integrity and operational excellence.</p>
+            <div class="timeline-achievement">Reduced app review handling time by 33%, clearing 7 months of backlog in just 2 months through process re-engineering</div>
+            <div class="timeline-achievement">Drove EPP Vendor Strategy & Optimization, identifying initiatives with potential for significant FTE savings</div>
+          </div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <div class="timeline-date">Dec 2022 - Dec 2023</div>
+            <h3 class="timeline-title">Software Test Engineer</h3>
+            <span class="timeline-company">Cisco Systems</span>
+            <p class="timeline-description">Focused on ensuring performance, stability, and quality of Cisco's core networking OS.</p>
+            <div class="timeline-achievement">Improved device efficiency by 15%, contributing to 5% increase in overall company productivity</div>
+            <div class="timeline-achievement">Developed automated test suites in Python to validate complex system interactions</div>
+          </div>
+        </div>
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <div class="timeline-date">Dec 2021 - Jan 2022</div>
+            <h3 class="timeline-title">Software Engineer Intern</h3>
+            <span class="timeline-company">SimpleeKare</span>
+            <p class="timeline-description">Contributed to the development of the Prescription Display System using ReactJS.</p>
+            <div class="timeline-achievement">Performed testing and bug fixing for critical user-facing components</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+
+        <!-- Project Card 1: Optimization -->
+        <div class="project-card">
+          <div class="card-header">
+            <!-- *** FINAL FIX: Embedded SVG Icon (Gear) *** -->
+            <svg class="card-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--secondary)" aria-hidden="true">
+              <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">App Expedite Review Process Overhaul</h3>
+            <p class="card-subtitle">Google Play</p>
+            <p class="card-text">Spearheaded initiative to mitigate critical app review delays; designed and implemented streamlined workflows, resulting in significant reduction in pending review volume and improved SLA adherence.</p>
+            <div class="tags">
+              <span class="tag">Process Optimization</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Cross-functional</span>
+            </div>
+            <a href="#experience" class="card-link">View Details →</a>
+          </div>
+        </div>
+
+        <!-- Project Card 2: Strategy/Analysis -->
+        <div class="project-card">
+          <div class="card-header">
+            <!-- *** FINAL FIX: Embedded SVG Icon (Chart) *** -->
+             <svg class="card-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--primary)" aria-hidden="true">
+               <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z"/>
+             </svg>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Enterprise Partner Program Optimization</h3>
+            <p class="card-subtitle">Google Play</p>
+            <p class="card-text">Analysis of vendor proposals under the Enterprise Partner Program; identified initiatives with potential for significant FTE savings and operational improvements.</p>
+            <div class="tags">
+              <span class="tag">Data Analysis</span>
+              <span class="tag">Strategy</span>
+              <span class="tag">Resource Optimization</span>
+            </div>
+            <a href="#experience" class="card-link">View Details →</a>
+          </div>
+        </div>
+
+        <!-- Project Card 3: Automation/Code -->
+        <div class="project-card">
+          <div class="card-header">
+            <!-- *** FINAL FIX: Embedded SVG Icon (Code Brackets) *** -->
+            <svg class="card-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--success)" aria-hidden="true">
+              <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Automated Validation Framework</h3>
+            <p class="card-subtitle">Cisco Systems</p>
+            <p class="card-text">Designed and implemented automated test suites in Python to rigorously validate complex system interactions and features, increasing testing efficiency.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Networking</span>
+            </div>
+             <a href="#experience" class="card-link">View Details →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills">
+    <div class="container">
+      <h2 class="section-title">My Expertise</h2>
+      <div class="skills-container">
+        <div class="skill-card">
+          <div class="skill-icon">📊</div>
+          <h3 class="skill-title">Project Management</h3>
+          <p>Google PM Certified</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🤖</div>
+          <h3 class="skill-title">Generative AI</h3>
+          <p>PMI Certified</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">☁️</div>
+          <h3 class="skill-title">Cloud</h3>
+          <p>Azure Fundamentals</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🐍</div>
+          <h3 class="skill-title">Python</h3>
+          <p>Automation</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🌐</div>
+          <h3 class="skill-title">Networking</h3>
+          <p>Cisco CCNA</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">📈</div>
+          <h3 class="skill-title">Data Analysis</h3>
+          <p>Decision Making</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">👨‍💻</div>
+          <h3 class="skill-title">Java</h3>
+          <p>Development</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🔄</div>
+          <h3 class="skill-title">Process Optimization</h3>
+          <p>Workflow Design</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Others Say</h2>
+      <div class="testimonial-container">
+        <div class="testimonial">
+          <div class="quote-icon quote-left">❝</div>
+          <p class="testimonial-text">Omkar has an extraordinary ability to bridge technical and business considerations. His process improvements on our app review system generated measurable impact while maintaining our high quality standards. His data-driven approach consistently delivers results.</p>
+          <h4 class="testimonial-author">Sarah Chen</h4>
+          <p class="testimonial-role">Engineering Manager, Google</p>
+          <div class="quote-icon quote-right">❞</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div class="contact-text">
+              <h3>Email</h3>
+              <p>omkargochhayat@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🔗</div>
+            <div class="contact-text">
+              <h3>LinkedIn</h3>
+              <p>linkedin.com/in/omkar-gochhayat</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-text">
+              <h3>Location</h3>
+              <p>Hyderabad, Telangana, India</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form>
+            <div class="form-group">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" id="subject" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="cta-button">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">Omkar Gochhayat</div>
+        <div class="footer-links">
+          <a href="#about" class="footer-link">About</a>
+          <a href="#experience" class="footer-link">Experience</a>
+          <a href="#projects" class="footer-link">Projects</a>
+          <a href="#skills" class="footer-link">Skills</a>
+          <a href="#contact" class="footer-link">Contact</a>
+        </div>
+      </div>
+      <div class="copyright">© 2024 Omkar Gochhayat. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+             targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        } else {
+            console.warn(`Smooth scroll target not found: ${targetId}`);
+        }
+      });
+    });
+
+    // Sticky navbar on scroll
+    window.addEventListener('scroll', function() {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 50) {
+        nav.style.padding = '0.8rem 0';
+        nav.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+      } else {
+        nav.style.padding = '1.5rem 0';
+        nav.style.boxShadow = 'none';
+      }
+    });
+
+     // Basic form submission prevention for demo
+    const contactForm = document.querySelector('.contact-form form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Contact form submitted (Demo)! Implement backend connection.');
+            this.reset(); // Optional: clear form after fake submit
+        });
+    }
+
+    // Update copyright year dynamically
+    const copyrightYear = document.querySelector('.copyright');
+    if(copyrightYear) {
+        copyrightYear.textContent = `© ${new Date().getFullYear()} Omkar Gochhayat. All rights reserved.`;
+    }
+
+  </script>
+</body>
+</html>
